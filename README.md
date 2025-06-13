@@ -19,6 +19,8 @@ graph LR
     G --> H(Liquidity Pool);
 ```
 
+### Deploy Contract
+
 ![Architectural Diagram](images/img1.png)
 
 To deploy the contracts on a Hardhat node, follow these steps:
