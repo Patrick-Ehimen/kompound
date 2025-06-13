@@ -2,6 +2,39 @@
 
 Kompound is a smart contract project that enables users to interact with the Compound protocol for lending and borrowing assets. It supports both ERC20 tokens and ETH, and implements a "long" strategy. The project also includes liquidation functionality.
 
+## Architectural Overview
+
+The Kompound project is designed with a modular architecture, comprising several smart contracts that interact with each other and with external protocols like Compound and Uniswap. The core contracts handle lending, borrowing, and liquidation functionalities, while interfaces define the interactions with external protocols.
+
+```mermaid
+graph LR
+    A[User] --> B(KompoundErc20);
+    A --> C(kompoundEth);
+    B --> D(Compound Protocol);
+    C --> D;
+    D --> E(ERC20 Tokens);
+    D --> F(ETH);
+    B --> G(Uniswap);
+    C --> G;
+    G --> H(Liquidity Pool);
+```
+
+![Architectural Diagram](images/img1.png)
+
+To deploy the contracts on a Hardhat node, follow these steps:
+
+1.  Start a Hardhat node:
+
+    ```shell
+    npx hardhat node
+    ```
+
+2.  Deploy the contracts using Hardhat Ignition, specifying the network as `localhost`:
+
+    ```shell
+    npx hardhat ignition deploy ./ignition/modules/KompoundModule.ts --network localhost
+    ```
+
 ## Contracts
 
 - `KompoundErc20.sol`: Handles interactions with ERC20 tokens in the Compound protocol.
